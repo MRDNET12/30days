@@ -1,3 +1,7 @@
+import { Language } from './translations';
+import { challengeDaysFr, bonusAffirmationsFr, softLifeTipsFr, checklistsDataFr, softLifeGuideFr, bonusSectionsFr, fiftyThingsAloneFr } from './challenge-data-fr';
+import { challengeDaysEn, bonusAffirmationsEn, softLifeTipsEn, checklistsDataEn, softLifeGuideEn, bonusSectionsEn, fiftyThingsAloneEn } from './challenge-data-en';
+
 export interface ChallengeDay {
   day: number;
   week: number;
@@ -759,3 +763,88 @@ export const fiftyThingsAlone = [
   'Ordenar tus redes sociales',
   'Planificar un mini viaje o una salida en solitario'
 ];
+
+// Function to get localized data based on language
+export function getLocalizedChallengeDays(language: Language): ChallengeDay[] {
+  switch (language) {
+    case 'fr':
+      return challengeDaysFr;
+    case 'en':
+      return challengeDaysEn;
+    case 'es':
+    default:
+      return challengeDays;
+  }
+}
+
+export function getLocalizedBonusAffirmations(language: Language): string[] {
+  switch (language) {
+    case 'fr':
+      return bonusAffirmationsFr;
+    case 'en':
+      return bonusAffirmationsEn;
+    case 'es':
+    default:
+      return bonusAffirmations;
+  }
+}
+
+export function getLocalizedSoftLifeTips(language: Language): string[] {
+  switch (language) {
+    case 'fr':
+      return softLifeTipsFr;
+    case 'en':
+      return softLifeTipsEn;
+    case 'es':
+    default:
+      return softLifeTips;
+  }
+}
+
+export function getLocalizedChecklistsData(language: Language) {
+  switch (language) {
+    case 'fr':
+      return checklistsDataFr;
+    case 'en':
+      return checklistsDataEn;
+    case 'es':
+    default:
+      return checklistsData;
+  }
+}
+
+export function getLocalizedSoftLifeGuide(language: Language) {
+  switch (language) {
+    case 'fr':
+      return softLifeGuideFr;
+    case 'en':
+      return softLifeGuideEn;
+    case 'es':
+    default:
+      return softLifeGuide;
+  }
+}
+
+export function getLocalizedBonusSections(language: Language) {
+  switch (language) {
+    case 'fr':
+      return bonusSectionsFr;
+    case 'en':
+      return bonusSectionsEn;
+    case 'es':
+    default:
+      return bonusSections;
+  }
+}
+
+export function getLocalizedFiftyThingsAlone(language: Language): string[] {
+  switch (language) {
+    case 'fr':
+      return fiftyThingsAloneFr;
+    case 'en':
+      return fiftyThingsAloneEn;
+    case 'es':
+    default:
+      return fiftyThingsAlone;
+  }
+}

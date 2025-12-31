@@ -1,8 +1,15 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { useStore, View } from '@/lib/store';
-import { challengeDays, bonusAffirmations, checklistsData, softLifeGuide, bonusSections, fiftyThingsAlone } from '@/lib/challenge-data';
+import {
+  getLocalizedChallengeDays,
+  getLocalizedBonusAffirmations,
+  getLocalizedChecklistsData,
+  getLocalizedSoftLifeGuide,
+  getLocalizedBonusSections,
+  getLocalizedFiftyThingsAlone
+} from '@/lib/challenge-data';
 import { Sparkles, BookOpen, TrendingUp, Home, Heart, Target, Layers, Gift, Settings, ChevronRight, Check, Plus, X, Calendar, Moon, Sun, Droplet, Zap, Smile, Activity, Utensils, Lightbulb, Image as ImageIcon, Trash2, Download, Bell, BellOff, Star, CheckSquare, ListChecks, Award, Globe } from 'lucide-react';
 import { useTranslation } from '@/lib/useTranslation';
 import { Language } from '@/lib/translations';
@@ -66,6 +73,14 @@ export default function GlowUpChallengeApp() {
 
   const { t } = useTranslation();
 
+  // Données localisées selon la langue
+  const challengeDays = useMemo(() => getLocalizedChallengeDays(language), [language]);
+  const bonusAffirmations = useMemo(() => getLocalizedBonusAffirmations(language), [language]);
+  const checklistsData = useMemo(() => getLocalizedChecklistsData(language), [language]);
+  const softLifeGuide = useMemo(() => getLocalizedSoftLifeGuide(language), [language]);
+  const bonusSections = useMemo(() => getLocalizedBonusSections(language), [language]);
+  const fiftyThingsAlone = useMemo(() => getLocalizedFiftyThingsAlone(language), [language]);
+
   // État pour le dialog de félicitations
   const [showCongratulations, setShowCongratulations] = useState(false);
 
@@ -79,10 +94,10 @@ export default function GlowUpChallengeApp() {
   });
 
   // États pour les modals
-  const [selectedChecklist, setSelectedChecklist] = useState<typeof checklistsData[0] | null>(null);
+  const [selectedChecklist, setSelectedChecklist] = useState<ReturnType<typeof getLocalizedChecklistsData>[0] | null>(null);
   const [showSoftLifeGuide, setShowSoftLifeGuide] = useState(false);
   const [selectedGuideStep, setSelectedGuideStep] = useState<number | null>(null);
-  const [selectedBonusSection, setSelectedBonusSection] = useState<typeof bonusSections[0] | null>(null);
+  const [selectedBonusSection, setSelectedBonusSection] = useState<ReturnType<typeof getLocalizedBonusSections>[0] | null>(null);
 
   useEffect(() => {
     if (hasStarted) {
