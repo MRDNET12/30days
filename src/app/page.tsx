@@ -1301,6 +1301,14 @@ export default function GlowUpChallengeApp() {
               </CardContent>
             </Card>
 
+            {/* Titre Section Suivi Bonus */}
+            <div className="pt-4">
+              <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
+                <Target className="w-6 h-6 text-purple-500" />
+                Suivi Bonus
+              </h2>
+            </div>
+
             {/* Small Wins Tracker */}
             <SmallWins />
 
